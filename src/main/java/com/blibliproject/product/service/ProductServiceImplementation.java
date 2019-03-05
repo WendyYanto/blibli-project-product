@@ -53,6 +53,7 @@ public class ProductServiceImplementation implements ProductService{
             current.setQuantity(product.getQuantity());
             current.setRating(product.getRating());
             current.setThumbnail_image(product.getThumbnail_image());
+            current.setCategoryId(product.getCategoryId());
 
             return current;
         }

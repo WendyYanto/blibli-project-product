@@ -33,7 +33,8 @@ public class ProductServiceTest {
                 "mainImage.jpg",
                 "thumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         Product response = service.create(current);
@@ -50,7 +51,8 @@ public class ProductServiceTest {
                 "mainImage.jpg",
                 "thumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         service.create(current);
@@ -72,7 +74,8 @@ public class ProductServiceTest {
                 "mainImage.jpg",
                 "thumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         Product second_current = new Product(
@@ -82,7 +85,8 @@ public class ProductServiceTest {
                 "mainImage1.jpg",
                 "thumbNailImage1.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         service.create(first_current);
@@ -103,7 +107,8 @@ public class ProductServiceTest {
                 "mainImage.jpg",
                 "thumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         Product second_current = new Product(
@@ -113,7 +118,8 @@ public class ProductServiceTest {
                 "mainImage.jpg",
                 "thumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         Product firstProductInserted = service.create(first_current);
@@ -134,7 +140,8 @@ public class ProductServiceTest {
                 "mainImage.jpg",
                 "thumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         Product updateCurrent = new Product(
@@ -144,7 +151,8 @@ public class ProductServiceTest {
                 "newMainImage.jpg",
                 "newThumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         service.create(firstCurrent);
@@ -168,7 +176,8 @@ public class ProductServiceTest {
                 "mainImage.jpg",
                 "thumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         Product updateCurrent = new Product(
@@ -178,7 +187,8 @@ public class ProductServiceTest {
                 "newMainImage.jpg",
                 "newThumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         service.create(firstCurrent);
@@ -196,7 +206,8 @@ public class ProductServiceTest {
                 "mainImage.jpg",
                 "thumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         service.create(firstCurrent);
@@ -216,7 +227,8 @@ public class ProductServiceTest {
                 "mainImage.jpg",
                 "thumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         Product second_current = new Product(
@@ -226,7 +238,8 @@ public class ProductServiceTest {
                 "2mainImage.jpg",
                 "2thumbNailImage.jpg",
                 10,
-                10
+                10,
+                1
         );
 
         service.create(first_current);

@@ -17,5 +17,6 @@ public class Product {
     private String thumbnail_image;
     private int quantity;
     private int rating;
+    private int CategoryId;
 
 }
