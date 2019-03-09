@@ -1,34 +1,30 @@
 package com.blibliproject.product.service;
 
 import com.blibliproject.product.model.Product;
+import com.blibliproject.product.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImplementation implements ProductService{
 
-    private List<Product> data = new ArrayList<Product>();
+    @Autowired
+    private ProductRepository productRepository;
 
     @Override
     public Product create(Product product) {
-
-        if(data.size() > 0 && findById((long) product.getId()) != null){
-            return null;
-        }
-
-        data.add(product);
-        return product;
+        return productRepository.save(product);
     }
 
     @Override
-    public Product findById(long id) {
+    public Product findById(Long id) {
+        Optional<Product> data = productRepository.findById(id);
 
-        for(int i=0;i<data.size();i++){
-            if(data.get(i).getId() == (int) id){
-                return data.get(i);
-            }
+        if(data.isPresent()){
+            return data.get();
         }
 
         return null;
@@ -36,38 +32,29 @@ public class ProductServiceImplementation implements ProductService{
 
     @Override
     public List<Product> getAll() {
-        if(data.size() == 0){
-            return null;
-        }
-        return data;
+        return productRepository.findAll();
     }
 
     @Override
-    public Product update(Product product, long id) {
-        Product current = findById(id);
+    public Product update(Product product, Long id) {
 
-        if(current != null){
-            current.setName(product.getName());
-            current.setMain_image(product.getMain_image());
-            current.setPrice(product.getPrice());
-            current.setQuantity(product.getQuantity());
-            current.setRating(product.getRating());
-            current.setThumbnail_image(product.getThumbnail_image());
-            current.setCategoryId(product.getCategoryId());
+        Product result = findById(id);
 
-            return current;
+        if(result != null){
+            product.setId(result.getId());
+            productRepository.save(product);
         }
 
         return null;
     }
 
     @Override
-    public Product delete(long id) {
-        Product current = findById(id);
+    public Product delete(Long id) {
+        Product result = findById(id);
 
-        if(current != null){
-            data.remove(current);
-            return current;
+        if(result != null){
+            productRepository.deleteById(id);
+            return result;
         }
 
         return null;
