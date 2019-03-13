@@ -1,8 +1,11 @@
 package com.blibliproject.product.controller;
 
 import com.blibliproject.product.model.Product;
+import com.blibliproject.product.security.ApiKey;
 import com.blibliproject.product.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +15,7 @@ public class ProductController {
 
     private ProductService productService;
 
+    @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
@@ -31,7 +35,7 @@ public class ProductController {
         produces = MediaType.APPLICATION_JSON_VALUE,
         consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public Product create(@RequestBody Product product){
+    public Product create(@RequestBody Product product, ApiKey apiKey){
         return productService.create(product);
     }
 
@@ -50,7 +54,7 @@ public class ProductController {
         produces = MediaType.APPLICATION_JSON_VALUE,
         consumes = MediaType.APPLICATION_JSON_VALUE
     )
-    public Product updateProduct(@PathVariable("id") long id, @RequestBody Product product){
+    public Product updateProduct(@PathVariable("id") long id, @RequestBody Product product, ApiKey apiKey){
         return productService.update(product,id);
     }
 
@@ -59,7 +63,7 @@ public class ProductController {
         method = RequestMethod.DELETE,
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public Product deleteProduct(@PathVariable("id") long id){
+    public Product deleteProduct(@PathVariable("id") long id, ApiKey apiKey){
         return productService.delete(id);
     }
 }
